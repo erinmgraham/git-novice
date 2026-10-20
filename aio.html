@@ -477,7 +477,7 @@
         
 <section id="aio-01-basics"><p>Content from <a href="01-basics.html">Automated Version Control</a></p>
 <hr>
-<p>Last updated on 2026-04-10 |
+<p>Last updated on 2026-10-20 |
 
         <a href="https://github.com/swcarpentry/git-novice/edit/main/episodes/01-basics.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -568,7 +568,7 @@ BitKeeper, one of the first distributed version control systems, to
 track changes in the Linux kernel. Torvalds provided several
 explanations of the name, of varying degrees of politeness, which are
 enumerated in the <a href="https://github.com/git/git/blob/master/README.md?plain=1#L55" class="external-link">project’s
-README</a>, including “Global Information Tacker” for when “you’re in a
+README</a>, including “Global Information Tracker” for when “you’re in a
 good mood”.</p>
 <p>For those interested, The Carpentries has a <a href="https://swcarpentry.github.io/hg-novice/" class="external-link">Version Control with
 Mercurial</a> lesson (2013-2018), which provides additional context and
@@ -1227,7 +1227,7 @@ directory.</li>
 </div>
 </div></section><section id="aio-04-changes"><p>Content from <a href="04-changes.html">Tracking Changes</a></p>
 <hr>
-<p>Last updated on 2026-04-10 |
+<p>Last updated on 2026-10-20 |
 
         <a href="https://github.com/swcarpentry/git-novice/edit/main/episodes/04-changes.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1272,12 +1272,13 @@ be in the <code>recipes</code> directory.</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">$</span> cd ~/Desktop/recipes</span></code></pre>
 </div>
 <p>Let’s create a file called <code>guacamole.md</code> that contains
-the basic structure of our first recipe. We’ll use <code>nano</code> to
-edit the file; you can use whatever editor you like. In particular, this
-does not have to be the <code>core.editor</code> you set globally
-earlier. But remember, the steps to create or edit a new file will
-depend on the editor you choose (it might not be nano). For a refresher
-on text editors, check out <a href="https://swcarpentry.github.io/shell-novice/03-create.html#which-editor" class="external-link">“Which
+the basic structure of our first recipe. A file editor is a command that
+opens a specified file in the current shell and allows you to edit it;
+the file is created if it does not exist.</p>
+<p>In this lesson, we’ll use <code>nano</code> as a file editor, but you
+can use whatever editor you like. In particular, this does not have to
+be the <code>core.editor</code> you set globally earlier during <a href="https://swcarpentry.github.io/git-novice/02-setup.html" class="external-link">“Setting
+Up Git”</a>. For a refresher on text editors, check out <a href="https://swcarpentry.github.io/shell-novice/03-create.html#which-editor" class="external-link">“Which
 Editor?”</a> in <a href="https://swcarpentry.github.io/shell-novice/" class="external-link">The Unix Shell</a>
 lesson.</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -1293,7 +1294,11 @@ lesson.</p>
 <span><span class="co">## Ingredients</span></span>
 <span><span class="co">## Instructions</span></span></code></pre>
 </div>
-<p>Save the file and exit your editor.</p>
+<p>Now we need to save the file and exit the editor. In the case of
+<code>nano</code>, many shortcuts are available via the <code>^</code>
+(symbolizing <code>Ctrl</code>) key. For example, to save and exit the
+editor you should use the sequence: <code>Ctrl+X</code> to exit,
+<code>Y</code> to save, and finally <code>Enter</code> to validate.</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -1422,8 +1427,9 @@ command (<code>ls</code>):</p>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="va">guacamole.md</span></span></code></pre>
 </div>
-<p><code>guacamole.md</code> contains three lines, which we can see by
-running:</p>
+<p>The <code>cat</code> command prints the content of a file in the
+shell. We can use it to visualize the 3 lines we added to
+<code>guacamole.md</code>:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1615,9 +1621,7 @@ have changed this file, but we haven’t told Git we will want to save
 those changes (which we do with <code>git add</code>) nor have we saved
 them (which we do with <code>git commit</code>). So let’s do that now.
 It is good practice to always review our changes before saving them. We
-do this using <code>git diff</code>. This shows us the differences
-between the current state of the file and the most recently saved
-version:</p>
+do this using <code>git diff</code>.</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1772,9 +1776,11 @@ what <code>git diff</code> reports:</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1" aria-label="code-block-38-1"></a><span class="ex">$</span> git add guacamole.md</span>
 <span id="cb38-2"><a href="#cb38-2" tabindex="-1" aria-label="code-block-38-2"></a><span class="ex">$</span> git diff</span></code></pre>
 </div>
-<p>There is no output: as far as Git can tell, there’s no difference
-between what it’s been asked to save permanently and what’s currently in
-the directory. However, if we do this:</p>
+<p>There is no output. Without any arguments, <code>git diff</code>
+compares the working directory and the staging area. After
+<code>git add</code>, the two versions are identical and there is
+nothing to show.</p>
+<p>However, if we do this:</p>
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1796,8 +1802,9 @@ index 315bf3a..b36abfd 100644
  * salt
  ## Instructions</code></pre>
 </div>
-<p>it shows us the difference between the last committed change and
-what’s in the staging area. Let’s save our changes:</p>
+<p>we can see that by adding the <code>--staged</code> argument to the
+command we are now comparing what’s in the staged area to the last
+committed change.</p>
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2282,7 +2289,7 @@ the local repository.</li>
 </div>
 </div></section><section id="aio-05-history"><p>Content from <a href="05-history.html">Exploring History</a></p>
 <hr>
-<p>Last updated on 2025-05-27 |
+<p>Last updated on 2026-10-20 |
 
         <a href="https://github.com/swcarpentry/git-novice/edit/main/episodes/05-history.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2319,13 +2326,13 @@ the local repository.</li>
 </div>
 </div>
 <p>As we saw in the previous episode, we can refer to commits by their
-identifiers. You can refer to the <em>most recent commit</em> of the
-working directory by using the identifier <code>HEAD</code>.</p>
-<p>We’ve been adding small changes at a time to
-<code>guacamole.md</code>, so it’s easy to track our progress by
-looking, so let’s do that using our <code>HEAD</code>s. Before we start,
-let’s make a change to <code>guacamole.md</code>, adding yet another
-line.</p>
+identifiers. Git also provides a special identifier called
+<code>HEAD</code>, which refers to the <strong>most recent
+commit</strong>.</p>
+<p>We can use <code>HEAD</code> together with commands we already know
+to examine our project’s history.</p>
+<p>Before we start, let’s make a change to <code>guacamole.md</code> so
+we have something to compare. We won’t save this change yet.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2347,7 +2354,7 @@ An ill-considered change</code></pre>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">$</span> git diff HEAD guacamole.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">$</span> git diff HEAD</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2362,17 +2369,16 @@ index b36abfd..0848c8d 100644
  ## Instructions
 +An ill-considered change</code></pre>
 </div>
-<p>Note that <code>HEAD</code> is the default option for
-<code>git diff</code>, so omitting it will not change the command’s
-output at all (give it a try). However, the real power of
-<code>git diff</code> lies in its ability to compare with previous
-commits. For example, by adding <code>~1</code> (where “~” is “tilde”,
-pronounced [<strong>til</strong>-d<em>uh</em>]), we can look at the
-commit before <code>HEAD</code>.</p>
+<p>Here we have the difference between the file in our working directory
+and the most recently committed version.</p>
+<p>We can also refer to earlier commits relative to <code>HEAD</code>.
+For example, by adding <code>~1</code> (where “~” is “tilde”, pronounced
+[<strong>til</strong>-d<em>uh</em>]), we can look at the commit before
+<code>HEAD</code>.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">$</span> git diff HEAD~1 guacamole.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="ex">$</span> git diff HEAD~1</span></code></pre>
 </div>
 <p>If we want to see the differences between older commits we can use
 <code>git diff</code> again, but with the notation <code>HEAD~1</code>,
@@ -2380,7 +2386,7 @@ commit before <code>HEAD</code>.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">$</span> git diff HEAD~2 guacamole.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">$</span> git diff HEAD~2</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2404,7 +2410,7 @@ we see by using <code>git diff</code>.</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> git show HEAD~2 guacamole.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">$</span> git show HEAD~2</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2440,7 +2446,7 @@ this:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">$</span> git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b guacamole.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="ex">$</span> git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2464,7 +2470,7 @@ seven for normal size projects):</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">$</span> git diff f22b25e guacamole.md</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="ex">$</span> git diff f22b25e</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2779,12 +2785,12 @@ most recently committed version of <code>ketchup.md</code>. So,
 <code>git diff</code>
 </h3>
 <div class="callout-content">
-<p>Consider this command: <code>git diff HEAD~9 guacamole.md</code>.
-What do you predict this command will do if you execute it? What happens
-when you do execute it? Why?</p>
-<p>Try another command, <code>git diff [ID] guacamole.md</code>, where
-[ID] is replaced with the unique identifier for your most recent commit.
-What do you think will happen, and what does happen?</p>
+<p>Consider this command: <code>git diff HEAD~9</code>. What do you
+predict this command will do if you execute it? What happens when you do
+execute it? Why?</p>
+<p>Try another command, <code>git diff [ID]</code>, where [ID] is
+replaced with the unique identifier for your most recent commit. What do
+you think will happen, and what does happen?</p>
 </div>
 </div>
 </div>
@@ -2931,7 +2937,7 @@ both commit messages and the difference between each commit.</p>
 </div>
 </div></section><section id="aio-06-ignore"><p>Content from <a href="06-ignore.html">Ignoring Things</a></p>
 <hr>
-<p>Last updated on 2025-12-11 |
+<p>Last updated on 2026-10-20 |
 
         <a href="https://github.com/swcarpentry/git-novice/edit/main/episodes/06-ignore.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3120,7 +3126,7 @@ nothing to commit, working tree clean</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>If you only want to ignore the contents of
 <code>pictures/cake</code>, you can change your <code>.gitignore</code>
@@ -3161,7 +3167,7 @@ directory except for <code>final.png</code>? Hint: Find out what
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You would add the following two lines to your .gitignore:</p>
 <div class="codewrapper">
@@ -3210,7 +3216,7 @@ not <code>pictures/pie</code>?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>If you want to ignore the contents of <code>pictures/</code> but not
 those of <code>pictures/pie/</code>, you can change your
@@ -3221,7 +3227,7 @@ subfolder. Your .gitignore would look like this:</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>pictures/*              # ignore everything in pictures folder
-!pictures/pie/          # do not ignore pictures/data/ contents</code></pre>
+!pictures/pie/          # do not ignore pictures/pie/ contents</code></pre>
 </div>
 </div>
 </div>
@@ -3258,7 +3264,7 @@ ignore all <code>.dat</code> files in
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Appending <code>pictures/data/location/gps/*.dat</code> will match
 every file in <code>pictures/data/location/gps</code> that ends with
@@ -3297,7 +3303,7 @@ listing the names of the corresponding folders?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>In the <code>.gitignore</code> file, write:</p>
 <div class="codewrapper">
@@ -3336,7 +3342,7 @@ exception with the exclamation point operator.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>The <code>!</code> modifier will negate an entry from a previously
 defined ignore pattern. Because the <code>!*.csv</code> entry negates
@@ -3380,7 +3386,7 @@ via <code>.gitignore</code>.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>append either <code>log_*</code> or <code>log*</code> as a new entry
@@ -3409,7 +3415,7 @@ can include files that would normally be ignored.</li>
 </div>
 </div></section><section id="aio-07-github"><p>Content from <a href="07-github.html">Remotes in GitHub</a></p>
 <hr>
-<p>Last updated on 2026-04-10 |
+<p>Last updated on 2026-10-20 |
 
         <a href="https://github.com/swcarpentry/git-novice/edit/main/episodes/07-github.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3606,7 +3612,7 @@ this command to create them.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Resolving SSH Key Conflicts: Custom Names and Paths </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>If you need to create an SSH key pair with a custom name or store it
 in a non-default location (e.g., because a default-named key like
@@ -3645,6 +3651,11 @@ email):</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="ex">$</span> ssh-keygen <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"a.linguini@ratatouille.fr"</span></span></code></pre>
 </div>
+<p>In the command above, the `-C- flag is used to label the SSH key with
+the owner’s email address. It’s good practice to use the same email
+associated to your GitHub account, but it does not have to be, and will
+not be used to validate the access. You can also decide not to add any
+label.</p>
 <p>If you are using a legacy system that doesn’t support the Ed25519
 algorithm, use:
 <code>$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</code></p>
@@ -3914,7 +3925,7 @@ buttons? How would you get that same information in the shell?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>When you click on the left-most button, you’ll see all of the changes
 that were made in that particular commit. Green shaded lines indicate
@@ -3976,7 +3987,7 @@ GitHub record times, and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>GitHub displays timestamps in a human readable relative format
 (i.e. “22 hours ago” or “three weeks ago”). However, if you hover over
@@ -4004,7 +4015,7 @@ push” different from “git commit”?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>When we push changes, we’re interacting with a remote repository to
 update it with the changes we’ve made locally (often this corresponds to
@@ -4034,7 +4045,7 @@ happened when you tried to link your local and remote repositories?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>In this case, we’d see a merge conflict due to unrelated histories.
 When GitHub creates a README.md file, it performs a commit in the remote
@@ -4371,7 +4382,7 @@ has changed with command line? And on GitHub?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>On the command line, the Collaborator can use
 <code>git fetch origin main</code> to get the remote changes into the
@@ -4435,7 +4446,7 @@ up.</li>
 </div>
 </div></section><section id="aio-09-conflict"><p>Content from <a href="09-conflict.html">Conflicts</a></p>
 <hr>
-<p>Last updated on 2025-05-27 |
+<p>Last updated on 2026-10-20 |
 
         <a href="https://github.com/swcarpentry/git-novice/edit/main/episodes/09-conflict.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -4870,7 +4881,7 @@ non-textual file that is stored in version control?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Let’s try it. Suppose Alfredo takes a picture of its guacamole and
 calls it <code>guacamole.jpg</code>.</p>
@@ -5001,7 +5012,7 @@ check out each image and rename it:</p>
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" tabindex="-1" aria-label="code-block-47-1"></a><span class="ex">$</span> git checkout HEAD guacamole.jpg</span>
-<span id="cb47-2"><a href="#cb47-2" tabindex="-1" aria-label="code-block-47-2"></a><span class="ex">$</span> git mv guacamole.jpg guacamole-only.jpg</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1" aria-label="code-block-47-2"></a><span class="ex">$</span> mv guacamole.jpg guacamole-only.jpg</span>
 <span id="cb47-3"><a href="#cb47-3" tabindex="-1" aria-label="code-block-47-3"></a><span class="ex">$</span> git checkout 439dc8c0 guacamole.jpg</span>
 <span id="cb47-4"><a href="#cb47-4" tabindex="-1" aria-label="code-block-47-4"></a><span class="ex">$</span> mv guacamole.jpg guacamole-nachos.jpg</span></code></pre>
 </div>
@@ -5114,7 +5125,7 @@ started.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <table class="table">
 <colgroup>
@@ -5992,8 +6003,8 @@ project over time.</li>
   "url": "https://swcarpentry.github.io/git-novice/aio.html",
   "identifier": "https://swcarpentry.github.io/git-novice/aio.html",
   "dateCreated": "2014-12-04",
-  "dateModified": "2026-10-13",
-  "datePublished": "2026-10-13"
+  "dateModified": "2026-10-20",
+  "datePublished": "2026-10-20"
 }
 
   </script><script>
